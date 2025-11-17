@@ -270,7 +270,8 @@ export default function Contacts() {
                     <div>
                       <label className="block text-sm font-medium text-gray-700">LinkedIn</label>
                       <input
-                        type="url"
+                        type="text"
+                        placeholder="https://linkedin.com/in/username"
                         className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500"
                         value={formData.linkedin}
                         onChange={(e) => setFormData({ ...formData, linkedin: e.target.value })}

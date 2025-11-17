@@ -116,6 +116,22 @@ The frontend will be available at `http://localhost:3000`
 
 ## Usage
 
+### Quick Start - Test Account
+
+A mock user account is available for testing:
+- **Email**: `student@example.com`
+- **Password**: `password123`
+
+You can use these credentials to log in immediately, or create your own account by registering.
+
+### Creating Additional Test Users
+
+To create the mock user account (if it doesn't exist), run:
+```bash
+cd backend
+python seed_data.py
+```
+
 1. **Register/Login**: Create an account or login to access the system
 2. **Add Companies**: Start by adding companies you're interested in
 3. **Create Applications**: Add job applications linked to companies
