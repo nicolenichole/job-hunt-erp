@@ -42,10 +42,12 @@ export default function Dashboard() {
     return <div className="text-center py-12">Failed to load dashboard</div>
   }
 
-  const statusChartData = Object.entries(stats.applications_by_status).map(([status, count]) => ({
-    status: status.replace('_', ' ').toUpperCase(),
-    count,
-  }))
+  const statusChartData = Object.entries(stats.applications_by_status)
+    .filter(([_, count]) => count > 0) // Only show statuses with data
+    .map(([status, count]) => ({
+      status: status.replace('_', ' ').toUpperCase(),
+      count,
+    }))
 
   return (
     <div className="px-4 sm:px-6 lg:px-8">
@@ -124,9 +126,16 @@ export default function Dashboard() {
         <div className="bg-white shadow rounded-lg p-6">
           <h2 className="text-lg font-medium text-gray-900 mb-4">Applications by Status</h2>
           <ResponsiveContainer width="100%" height={300}>
-            <BarChart data={statusChartData}>
+            <BarChart data={statusChartData} margin={{ top: 5, right: 30, left: 20, bottom: 60 }}>
               <CartesianGrid strokeDasharray="3 3" />
-              <XAxis dataKey="status" />
+              <XAxis 
+                dataKey="status" 
+                angle={-45}
+                textAnchor="end"
+                height={80}
+                interval={0}
+                tick={{ fontSize: 12 }}
+              />
               <YAxis />
               <Tooltip />
               <Bar dataKey="count" fill="#3b82f6" />
